@@ -1,0 +1,80 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.installed.cfg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+*.cover
+
+# --- Virtual environments ---
+venv/
+.venv/
+env/
+ENV/
+.env
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb_meta
+profile_default/
+ipython_config.py
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+
+# --- Dati grezzi e processati ---
+# I CSV di Kaggle (fraudTrain.csv, fraudTest.csv) sono ~470MB complessivi
+# e vanno scaricati manualmente dall'utente in data/raw/. Non li committiamo
+# per non duplicare la fonte ufficiale e per non superare i limiti di GitHub.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/external/*
+!data/external/.gitkeep
+
+# --- Modelli serializzati ---
+# I modelli .joblib vengono rigenerati da `fraud-train` (RandomForest può
+# pesare >200MB su 1.5M record). Fuori dal repo per scelta.
+reports/models/*
+!reports/models/.gitkeep
+
+# --- Plots (rigenerati ad ogni run) ---
+reports/figures/*
+!reports/figures/.gitkeep
+
+# --- Output di training (riproducibili) ---
+reports/cv_summary.csv
+reports/holdout_metrics.json
+reports/threshold_analysis.csv
+
+# --- Log ---
+*.log
+logs/
+
+# --- OS ---
+.DS_Store
+*~
+
+# --- Site MkDocs build ---
+site/

@@ -1,0 +1,152 @@
+// ============================================================================
+//  Custom overrides — Credit Card Fraud Detection
+//  Caricato automaticamente da Just the Docs dopo il tema base.
+// ============================================================================
+
+// --- Hero banner della homepage ---
+.hero-banner {
+  background: linear-gradient(135deg, #4051b5 0%, #7c4dff 100%);
+  color: #ffffff;
+  padding: 2.25rem 1.25rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0 2rem;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(64, 81, 181, 0.18);
+
+  h1 {
+    color: #ffffff;
+    margin-top: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  p {
+    font-size: 1rem;
+    opacity: 0.95;
+    margin-bottom: 0;
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    padding: 0.1em 0.35em;
+    border-radius: 0.25rem;
+  }
+}
+
+@media (min-width: 50rem) {
+  .hero-banner {
+    padding: 3rem 2.5rem;
+
+    h1 { font-size: 2.25rem; }
+    p  { font-size: 1.1rem; }
+  }
+}
+
+// --- Tabelle: scroll orizzontale su mobile per non rompere il layout ---
+.main-content table {
+  font-size: 0.9em;
+}
+
+@media (max-width: 50rem) {
+  .main-content {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+// --- Code blocks: density più compatta ---
+.main-content pre.highlight,
+.main-content figure.highlight pre {
+  font-size: 0.82em;
+  line-height: 1.55;
+}
+
+// --- Heading più leggibili su mobile ---
+@media (max-width: 30rem) {
+  .main-content h1 { font-size: 1.5rem; }
+  .main-content h2 { font-size: 1.25rem; }
+  .main-content h3 { font-size: 1.1rem; }
+}
+
+// --- Blockquote stilizzato (citazioni didattiche) ---
+.main-content blockquote {
+  border-left: 4px solid #7c4dff;
+  background: rgba(124, 77, 255, 0.06);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+// --- Footer custom: link colorati ---
+.site-footer {
+  font-size: 0.85em;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-top: 1px solid var(--border-color, #e6e1e8);
+
+  a {
+    color: var(--link-color, #7253ed);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+}
+
+// --- KPI cards (homepage) ---
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 40rem) {
+  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.kpi-card {
+  border: 1px solid var(--border-color, #e6e1e8);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: var(--sidebar-color, #f5f6fa);
+  text-align: center;
+
+  .kpi-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4051b5;
+    margin: 0.25rem 0;
+  }
+
+  .kpi-label {
+    font-size: 0.85em;
+    color: #5c5962;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+// --- Color scheme dark: contrasti più forti ---
+[data-theme="dark"] {
+  .hero-banner {
+    background: linear-gradient(135deg, #4051b5 0%, #5e35b1 100%);
+  }
+
+  .kpi-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+
+    .kpi-value { color: #b39ddb; }
+    .kpi-label { color: #b8b6bd; }
+  }
+
+  .main-content blockquote {
+    border-left-color: #b39ddb;
+    background: rgba(179, 157, 219, 0.08);
+  }
+}

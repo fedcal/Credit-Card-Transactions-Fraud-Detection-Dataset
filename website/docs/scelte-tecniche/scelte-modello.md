@@ -1,24 +1,11 @@
 ---
-layout: default
-title: Scelte di modellazione
-parent: Scelte tecniche
-nav_order: 2
-math: mathjax
-description: >-
-  Trade-off espliciti su feature engineering, scelta del modello, gestione
-  dello sbilanciamento, validation strategy, threshold tuning e drift.
+sidebar_position: 2
+title: "Scelte di modellazione: razionale"
+description: |
+  Razionale LogReg+RF+XGB, class_weight, soglia, gestione drift.
 ---
 
 # Scelte di modellazione
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 Questa pagina documenta le **decisioni progettuali** della pipeline e le motivazioni dietro ciascuna. Ogni decisione è accompagnata dal trade-off accettato.
 
@@ -123,7 +110,7 @@ Discutiamo onestamente questa scelta nella pipeline.
 
 **Razionale dello shortcut**:
 
-1. **Dimensione del test**: 555k transazioni. Le stime sono molto stabili — il rumore è < 1%.
+1. **Dimensione del test**: 555k transazioni. Le stime sono molto stabili — il rumore è &lt; 1%.
 2. **Dataset Kaggle predefinito**: `fraudTrain` e `fraudTest` sono già splittati. Costruire un validation interno significa rifare lo split, complicando la pipeline.
 3. **Scopo didattico**: il PW chiede di mostrare l'ottimizzazione della soglia su matrice di costi, non di simulare un deployment puro.
 

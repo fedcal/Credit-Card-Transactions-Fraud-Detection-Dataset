@@ -1,24 +1,11 @@
 ---
-layout: default
+sidebar_position: 1
 title: Classificazione sbilanciata
-parent: Teoria
-nav_order: 1
-math: mathjax
-description: >-
-  Perché l'accuracy fallisce quando una classe è rara, come misurare
-  davvero il modello (AUC-PR), e tre strategie per mitigare il problema.
+description: |
+  Class imbalance, accuracy paradox, strategie: weighting, sampling, threshold.
 ---
 
 # Classificazione sbilanciata
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Il problema
 
@@ -42,8 +29,9 @@ $$
 
 Sembra ottimo, ma il **recall sulle frodi è zero**. Tutte le frodi vengono mancate. Per questo l'accuracy è una metrica fuorviante (e silenziosamente disastrosa) sui dataset sbilanciati.
 
-!!! warning "Regola pratica"
-    Quando la classe positiva ha prevalenza ≪ 50%, l'accuracy va **sempre** ignorata. Sostituiscila con AUC-PR + recall + precision sulla classe minoritaria.
+:::warning Regola pratica
+Quando la classe positiva ha prevalenza ≪ 50%, l'accuracy va **sempre** ignorata. Sostituiscila con AUC-PR + recall + precision sulla classe minoritaria.
+:::
 
 ## 3. La curva PR e l'AUC-PR
 
@@ -63,10 +51,11 @@ L'AUC-ROC misura la separazione fra le distribuzioni di score della classe posit
 - L'AUC-ROC **resta ottimisticamente alta** anche se il modello è quasi inutile in pratica, perché il denominatore della specificità (numero di negativi) è enorme.
 - L'AUC-PR **rispecchia la difficoltà reale**: con prevalenza 0,5%, un classificatore casuale ha AUC-PR ≈ 0,005, non 0,5.
 
-!!! example "Perché AUC-ROC inganna su frodi"
-    Modello A: AUC-ROC = 0,98 → sembra eccellente.
-    AUC-PR = 0,12 → solo il 12% delle predizioni positive sono vere frodi alla soglia ottimale.
-    Su 100.000 transazioni reali, blocchi 8.000 transazioni e ne becchi 80 vere frodi. Inutilizzabile in produzione.
+:::info Esempio — Perché AUC-ROC inganna su frodi
+Modello A: AUC-ROC = 0,98 → sembra eccellente.
+AUC-PR = 0,12 → solo il 12% delle predizioni positive sono vere frodi alla soglia ottimale.
+Su 100.000 transazioni reali, blocchi 8.000 transazioni e ne becchi 80 vere frodi. Inutilizzabile in produzione.
+:::
 
 ### Calcolo
 
@@ -118,19 +107,20 @@ X_res, y_res = SMOTE(random_state=42).fit_resample(X_train, y_train)
 **Pro di SMOTE**: aggiunge varietà, non solo duplicati.
 **Contro**: lento su dataset grandi (1,5M righe), e gli esempi sintetici in alto-dimensionale possono finire in zone "improbabili" dello spazio.
 
-!!! note "La nostra scelta"
-    In questa pipeline usiamo `class_weight='balanced'` (e `scale_pos_weight` per XGBoost) come strategia primaria. È **scalabile**, **veloce** e **non altera la distribuzione dei dati**. SMOTE è valutato come ablation nel notebook 03.
+:::note La nostra scelta
+In questa pipeline usiamo `class_weight='balanced'` (e `scale_pos_weight` per XGBoost) come strategia primaria. È **scalabile**, **veloce** e **non altera la distribuzione dei dati**. SMOTE è valutato come ablation nel notebook 03.
+:::
 
 ### 4.3 Threshold tuning
 
-A differenza delle precedenti due strategie (che agiscono sul training), questa agisce **dopo** che il modello ha prodotto le probabilità. La soglia 0,5 di default è quasi sempre subottimale: si sceglie la soglia ottimale post-hoc su un set di validazione (vedi [pagina dedicata](06_threshold_tuning_e_costi.md)).
+A differenza delle precedenti due strategie (che agiscono sul training), questa agisce **dopo** che il modello ha prodotto le probabilità. La soglia 0,5 di default è quasi sempre subottimale: si sceglie la soglia ottimale post-hoc su un set di validazione (vedi [pagina dedicata](06-threshold-tuning-costi.md)).
 
 ## 5. Effetti sulla validazione
 
 Lo sbilanciamento ha conseguenze anche sulla **strategia di cross-validation**:
 
 - **`StratifiedKFold`** (e non `KFold`): garantisce che ogni fold abbia la stessa proporzione di positivi. Senza stratificazione, su 5 fold si rischia di averne uno con zero positivi e metriche `NaN`.
-- Per i problemi temporali (come Fraud), **`TimeSeriesSplit`** prevale comunque sulla stratificazione (vedi [Split temporale](04_split_temporale_e_leakage.md)).
+- Per i problemi temporali (come Fraud), **`TimeSeriesSplit`** prevale comunque sulla stratificazione (vedi [Split temporale](04-split-temporale-leakage.md)).
 
 ## 6. Sintesi
 

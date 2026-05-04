@@ -1,0 +1,9 @@
+{
+  "label": "Teoria",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/teoria",
+    "description": "Fondamenti teorici della pipeline di fraud detection: classificazione sbilanciata, metriche, feature temporali, split temporale, modelli supervisionati, threshold tuning."
+  }
+}

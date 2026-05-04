@@ -1,23 +1,11 @@
 ---
-layout: default
-title: Architettura
-parent: Scelte tecniche
-nav_order: 1
-description: >-
-  Mappa dei moduli `src/fraud_pipeline/`, flusso dei dati, CLI, file
-  persistenti e razionali delle decisioni di organizzazione del codice.
+sidebar_position: 1
+title: Architettura del progetto
+description: |
+  Moduli fraud_pipeline/, flusso dati, CLI fraud-train e fraud-predict.
 ---
 
 # Architettura della pipeline
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Vista a 3 layer
 

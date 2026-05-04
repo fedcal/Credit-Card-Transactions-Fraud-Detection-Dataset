@@ -1,0 +1,9 @@
+{
+  "label": "Scelte tecniche",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/scelte-tecniche",
+    "description": "Decisioni architetturali e di modellazione del progetto Credit Card Fraud Detection: trade-off espliciti."
+  }
+}

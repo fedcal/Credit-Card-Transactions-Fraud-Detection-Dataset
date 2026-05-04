@@ -1,25 +1,11 @@
 ---
-layout: default
+sidebar_position: 4
 title: Split temporale & leakage
-parent: Teoria
-nav_order: 4
-math: mathjax
-description: >-
-  Perché KFold casuale è sbagliato sui dati transazionali, come usare
-  TimeSeriesSplit / walk-forward CV, e quali aggregati possono leakare
-  informazione futura nei modelli di fraud detection.
+description: |
+  Time-aware split, prevenzione del leakage in transazioni temporali.
 ---
 
 # Split temporale e data leakage
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Il problema della causalità
 
@@ -31,7 +17,7 @@ Tre patologie da evitare:
 2. **Aggregati temporali leak-canti**: feature come "media globale dell'importo per cliente" includono il futuro.
 3. **Tuning iperparametri su tutto il dataset**: ogni decisione presa sul dataset completo (es. SMOTE su train+test) porta segnale dal test al modello.
 
-Questa pagina copre la (1) e (3). La (2) è in [Feature engineering temporali](03_feature_engineering_temporali.md).
+Questa pagina copre la (1) e (3). La (2) è in [Feature engineering temporali](03-feature-engineering-temporali.md).
 
 ## 2. Perché KFold casuale è sbagliato sui dati transazionali
 

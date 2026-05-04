@@ -1,25 +1,11 @@
 ---
-layout: default
+sidebar_position: 3
 title: Feature engineering temporali
-parent: Teoria
-nav_order: 3
-math: mathjax
-description: >-
-  Decomposizione del timestamp, feature di stagionalità, distanza
-  geografica Haversine, aggregati expanding per cliente. Costruite con
-  attenzione al data leakage temporale.
+description: |
+  Time of day, day of week, time-since-last, geo features.
 ---
 
 # Feature engineering temporali per fraud detection
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Perché il feature engineering è il cuore di fraud detection
 
@@ -137,8 +123,9 @@ df["customer_mean_amt_so_far"] = (
 
 Lo `shift(1)` PRIMA dell'expanding garantisce che la riga corrente non entri nella sua stessa media. La riga $t$ vede solo statistiche calcolate su $0, 1, \dots, t-1$.
 
-!!! warning "Test di no-leakage"
-    Nel file `tests/test_features.py` c'è un test esplicito: `test_customer_aggregates_no_future_leakage`. Verifica che la **prima** transazione di ogni cliente abbia `tx_count_so_far == 0`. Se non fosse così, il transformer starebbe includendo la riga corrente nel suo aggregato.
+:::warning Test di no-leakage
+Nel file `tests/test_features.py` c'è un test esplicito: `test_customer_aggregates_no_future_leakage`. Verifica che la **prima** transazione di ogni cliente abbia `tx_count_so_far == 0`. Se non fosse così, il transformer starebbe includendo la riga corrente nel suo aggregato.
+:::
 
 ### Implementazione efficiente
 
@@ -169,7 +156,7 @@ Il dataset ha:
     - **Target encoding** (con prior): sostituire ogni merchant con la sua probabilità storica di frode. Richiede attenzione al leakage (calcolare il prior solo sul train) e regularization (Bayesian shrinkage).
     - **Hashing trick**: `HashingVectorizer` su una dimensione fissa (es. 64).
 
-In questa pipeline droppiamo `merchant` per default (vedi `preprocessing.HIGH_CARDINALITY_COLUMNS`). Il target encoding è discusso nel file `docs/scelte_tecniche/scelte_modello.md`.
+In questa pipeline droppiamo `merchant` per default (vedi `preprocessing.HIGH_CARDINALITY_COLUMNS`). Il target encoding è discusso nel file `docs/scelte_tecniche/scelte-modello.md`.
 
 ## 8. Feature engineer come `Pipeline` step
 

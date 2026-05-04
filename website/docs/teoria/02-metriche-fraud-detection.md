@@ -1,24 +1,11 @@
 ---
-layout: default
-title: Metriche fraud detection
-parent: Teoria
-nav_order: 2
-math: mathjax
-description: >-
-  Recall, Precision, F1, F-beta, AUC-PR, MCC: quando usare quale, come
-  interpretarle e perché il costo asimmetrico FN/FP cambia tutto.
+sidebar_position: 2
+title: Metriche per fraud detection
+description: |
+  Precision, recall, F1, F-beta, ROC-AUC, PR-AUC: cosa misurano e quando preferire una all'altra.
 ---
 
 # Metriche per fraud detection
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. La confusion matrix come fondamento
 
@@ -74,8 +61,9 @@ $$
 
 Compromesso fra le due. Il massimo si ottiene quando precision = recall.
 
-!!! warning "F1 da' uguale peso a precision e recall"
-    Se in fraud detection `cost(FN) ≫ cost(FP)`, F1 sotto-pesa il recall. La generalizzazione corretta è F-beta.
+:::warning F1 dà uguale peso a precision e recall
+Se in fraud detection `cost(FN) ≫ cost(FP)`, F1 sotto-pesa il recall. La generalizzazione corretta è F-beta.
+:::
 
 ## 3. F-beta: dare peso esplicito al recall
 
@@ -128,7 +116,7 @@ Il vantaggio: questa metrica:
 
 1. Tiene conto dell'asimmetria.
 2. È in unità monetarie comprensibili al business.
-3. Permette di scegliere la **soglia ottimale** in modo principled (vedi [Threshold tuning](06_threshold_tuning_e_costi.md)).
+3. Permette di scegliere la **soglia ottimale** in modo principled (vedi [Threshold tuning](06-threshold-tuning-costi.md)).
 
 ## 6. AUC-ROC: usare con cautela
 

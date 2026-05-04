@@ -1,24 +1,11 @@
 ---
-layout: default
+sidebar_position: 6
 title: Threshold tuning & costi
-parent: Teoria
-nav_order: 6
-math: mathjax
-description: >-
-  Perché la soglia 0.5 è subottimale, come scegliere la soglia che
-  minimizza il costo atteso e implicazioni operative del deployment.
+description: |
+  Decision threshold come iperparametro, matrice costi asimmetrica.
 ---
 
 # Threshold tuning su matrice di costi
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Il punto: 0.5 è sbagliato
 

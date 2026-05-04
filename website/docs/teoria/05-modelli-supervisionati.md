@@ -1,25 +1,11 @@
 ---
-layout: default
+sidebar_position: 5
 title: Modelli supervisionati
-parent: Teoria
-nav_order: 5
-math: mathjax
-description: >-
-  Logistic Regression, Random Forest e Gradient Boosting (XGBoost) a
-  confronto: assunzioni, gestione dello sbilanciamento, calibrazione,
-  trade-off di interpretabilità.
+description: |
+  LogReg, RandomForest, XGBoost: pro/contro per fraud detection.
 ---
 
 # Modelli supervisionati per fraud detection
-{: .no_toc }
-
-## Indice
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## 1. Tre famiglie complementari
 

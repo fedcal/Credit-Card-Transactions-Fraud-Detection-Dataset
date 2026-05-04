@@ -5,7 +5,20 @@
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
-[![Docs](https://img.shields.io/badge/docs-Just%20the%20Docs-blueviolet.svg)](https://fedcal.github.io/credit-card-fraud-detection/)
+[![Docs](https://img.shields.io/badge/docs-Docusaurus%203-blueviolet.svg)](https://fedcal.github.io/Credit-Card-Transactions-Fraud-Detection-Dataset/)
+
+> **Nome GitHub raccomandato per il repository**: `Credit-Card-Transactions-Fraud-Detection-Dataset`
+>
+> Documentazione costruita con **Docusaurus 3 + TypeScript + KaTeX** (cartella `website/`). Il deploy su GitHub Pages è automatizzato dal workflow `.github/workflows/deploy-docs.yml` (build di `website/build` su ogni push).
+>
+> Build locale della documentazione:
+>
+> ```bash
+> cd website
+> npm install
+> npm run build       # output in website/build
+> npm start           # dev server su http://localhost:3000
+> ```
 
 ## Dettagli
 

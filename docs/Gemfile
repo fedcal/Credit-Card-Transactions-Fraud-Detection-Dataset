@@ -1,8 +1,7 @@
-# Gemfile per build locale della documentazione
-# (GitHub Pages builda lato server con la sua versione di Jekyll: questo
-#  Gemfile serve solo se vuoi testare in locale con `bundle exec jekyll serve`).
+# Gemfile per la documentazione (Jekyll + Just the Docs).
+# Usato dal workflow GitHub Actions `.github/workflows/jekyll.yml`
+# per buildare il sito statico in produzione, e localmente per il preview:
 #
-# Setup locale:
 #   gem install bundler
 #   bundle install
 #   bundle exec jekyll serve --livereload
@@ -10,16 +9,20 @@
 
 source "https://rubygems.org"
 
-# Stack ufficiale GitHub Pages (allinea Jekyll/plugin alla versione runtime)
-gem "github-pages", group: :jekyll_plugins
+# Jekyll 4.x è richiesto da just-the-docs >= 0.10
+gem "jekyll", "~> 4.3"
 
-# Plugin extra (già whitelisted da GitHub Pages)
+# Tema documentazione (gem locale — più affidabile del remote_theme)
+gem "just-the-docs", "~> 0.10.1"
+
 group :jekyll_plugins do
-  gem "jekyll-remote-theme"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
-  gem "jekyll-include-cache"
+  gem "jekyll-seo-tag", "~> 2.8"
+  gem "jekyll-sitemap", "~> 1.4"
+  gem "jekyll-include-cache", "~> 0.2"
 end
+
+# Webrick è richiesto da Ruby >= 3.0 per `jekyll serve`
+gem "webrick", "~> 1.8"
 
 # Windows / JRuby (innocuo su Linux/macOS)
 platforms :mingw, :x64_mingw, :mswin, :jruby do

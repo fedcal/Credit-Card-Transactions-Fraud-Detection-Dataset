@@ -15,8 +15,8 @@ description: >-
 url: https://fedcal.github.io
 baseurl: /credit-card-fraud-detection
 
-# --- Tema (remote — versione pinned per build stabili) ---
-remote_theme: just-the-docs/just-the-docs@v0.10.1
+# --- Tema (gem locale — build via GitHub Actions con Bundler) ---
+theme: just-the-docs
 color_scheme: light
 
 # --- Permalink puliti senza .html ---
@@ -25,9 +25,8 @@ permalink: pretty
 # --- Lingua ---
 lang: it-IT
 
-# --- Plugins (whitelisted da GitHub Pages) ---
+# --- Plugins ---
 plugins:
-  - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-include-cache

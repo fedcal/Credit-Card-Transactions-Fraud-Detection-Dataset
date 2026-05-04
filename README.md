@@ -124,7 +124,7 @@ Fase 7: Proto-pipeline di produzione
 **Nome del repository pubblico**: `credit-card-fraud-detection`
 URL: <https://github.com/fedcal/credit-card-fraud-detection>
 
-Il sito documentazione è generato con **Jekyll + Just the Docs** (mobile-first, SEO-ready, dark mode, MathJax) ed è servito da GitHub Pages direttamente dalla cartella [`/docs`](docs/). Da abilitare in *Settings → Pages → Source = Deploy from a branch, Branch = `main` / `/docs`* alla prima volta. Ogni push su `main` aggiorna automaticamente il sito.
+Il sito documentazione è generato con **Jekyll + Just the Docs** (mobile-first, SEO-ready, dark mode, MathJax) ed è pubblicato su GitHub Pages dal workflow [`.github/workflows/jekyll.yml`](.github/workflows/jekyll.yml) (build con Bundler + `bundle exec jekyll build`, deploy via `actions/deploy-pages@v4`). **Setup richiesto una volta sola**: *Settings → Pages → Build and deployment → Source = **GitHub Actions***. Ogni push su `main` aggiorna automaticamente il sito.
 
 ## Documentazione completa
 
